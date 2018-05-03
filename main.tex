@@ -1,61 +1,68 @@
-\documentclass[12pt]{ociamthesis}  % default square logo 
-%\documentclass[12pt,beltcrest]{ociamthesis} % use old belt crest logo
-%\documentclass[12pt,shieldcrest]{ociamthesis} % use older shield crest logo
+%%==========DOCUMENT INFO============
+\documentclass[12pt]{report}
 
-%load any additional packages
-\usepackage{amssymb}
-
-%input macros (i.e. write your own macros file called mymacros.tex 
-%and uncomment the next line)
-%\include{mymacros}
-
-\title{Codimension-Two\\[1ex]     %your thesis title,
-        Free Boundary Problems}   %note \\[1ex] is a line break in the title
-
-\author{Keith Gillow}             %your name
-\college{St Catherine's College}  %your college
-
-%\renewcommand{\submittedtext}{change the default text here if needed}
-\degree{Doctor of Philosophy}     %the degree
-\degreedate{Trinity 1998}         %the degree date
-
-%end the preamble and start the document
+\usepackage{graphicx}
+\usepackage[a4paper,
+	left=20mm,
+    right=20mm,
+    top=15mm]{geometry}
+\usepackage{lipsum}
+\usepackage{longtable,multirow,multicol,booktabs}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{pdfpages}
+% Oles pakker:
+	%-------------%
+	\usepackage[disable]{todonotes} % for å disable alle orange boksene
+    \usepackage{todonotes} % gir mulighet til å lage orange bokser.
+    \usepackage{wrapfig,enumitem} % wrapfig gjør at du kan mekke bedre bokser for images
+    % enumitem gir mulighet til [noitemsep, align=left/right] på itemize, descriptions og enumerate
+    \usepackage{pbox} % for å lage nye linjer inni tabeller.
+    \usepackage{pifont} % for å kunne bruke \ding{nummer}
+    % Se på nummer som kan brukes: https://en.wikibooks.org/wiki/LaTeX/Special_Characters#Other_symbols
+    \def\gruppen{Gruppen } % skriver du \gruppen i koden, så blir det til Gruppen
+    \def\gruppenc{Gruppen, }
+    \def\gruppend{Gruppen. }
+    \def\kato{Katoplast }
+    \def\katoc{Katoplast, }
+    \def\katod{Katoplast. }
+    %-------------%
+    
+\renewcommand{\chaptername}{Kapittel}
+%%============Pre-Chapters============
 \begin{document}
+\setcounter{page}{0}
+% * <erhan.mikael.sanlioglu@gmail.com> 2017-04-05T19:04:10.510Z:
+%
+% ^.
+\pagenumbering{roman}
+\includepdf[scale=0.9999,pages=1]{Software}
+%\include{Prechapter/Tittel}
+\include{Prechapter/Prosjektoppgave}
+\include{Prechapter/preword}
+\include{Prechapter/summary}
+\include{Prechapter/takktill}
 
-%this baselineskip gives sufficient line spacing for an examiner to easily
-%markup the thesis with comments
-\baselineskip=18pt plus1pt
 
-%set the number of sectioning levels that get number and appear in the contents
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{3}
+\include{Prechapter/index}
 
+\setcounter{page}{0}
+\pagenumbering{arabic}
 
-\maketitle                  % create a title page from the preamble info
-\include{dedication}        % include a dedication.tex file
-\include{acknowlegements}   % include an acknowledgements.tex file
-\include{abstract}          % include the abstract
+%%===========MAIN CONTENT============
+\include{Chapters/chapter1}
+\include{Chapters/chapter2}
+\include{Chapters/chapter3}
+\include{Chapters/chapter4}
+\include{Chapters/chapter5}
+\include{Chapters/chapter6}
 
-\begin{romanpages}          % start roman page numbering
-\tableofcontents            % generate and include a table of contents
-\listoffigures              % generate and include a list of figures
-\end{romanpages}            % end roman page numbering
+%%===========Attachments==============
 
-%now include the files of latex for each of the chapters etc
-\include{chapter1}
-\include{chapter2}
-\include{conclusions}
-
-%now enable appendix numbering format and include any appendices
-\appendix
-\include{appendix1}
-\include{appendix2}
-
-%next line adds the Bibliography to the contents page
-\addcontentsline{toc}{chapter}{Bibliography}
-%uncomment next line to change bibliography name to references
-%\renewcommand{\bibname}{References}
-\bibliography{refs}        %use a bibtex bibliography file refs.bib
-\bibliographystyle{plain}  %use the plain bibliography style
-
+\include{Vedlegg/referanse}
+\include{Vedlegg/ordre}
+\include{Vedlegg/vedlegg}
+%\include{Attachments/appendix}
+% Include more appendices as required.
+%%===================================
 \end{document}
